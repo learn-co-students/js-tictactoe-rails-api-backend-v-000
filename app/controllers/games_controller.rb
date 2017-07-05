@@ -1,25 +1,32 @@
 class GamesController < ApplicationController
-  def new
-    @game = Game.new
+  before_action :find_game, only: [:show, :update]
+
+  def index
+    @games = Game.all
+    render json: @games
   end
 
   def create
-    @game = Game.new(game_params)
+    @game = Game.create(game_params)
+    render json: @game
   end
 
   def show
-    @game = Game.find(params[:id])
-    respond_to do |format|
-      format.json { render json: @game }
-    end
+    render json: @game
   end
 
   def update
+    @game.update(game_params)
+    render json: @game
   end
 
   private
 
   def game_params
-    params.require(:game).permit(:state)
+    params.permit(state: [])
+  end
+
+  def find_game
+    @game = Game.find(params[:id])
   end
 end
