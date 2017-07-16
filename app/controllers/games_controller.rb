@@ -4,10 +4,7 @@ class GamesController < ApplicationController
   
   def index 
     @games = Game.all
-    respond_to do |f|
-      f.html { render "home/index"}
-      f.json { render json: @games }
-    end
+    render json: @games
   end
   
   def new
@@ -20,25 +17,22 @@ class GamesController < ApplicationController
   end
 
   def show
-    respond_to do |f|
-      f.html { render "home/index"}
-      f.json { render json: @game }
-    end
+    render json: @game
   end
 
- def edit
+  def edit
 
- end
+  end
 
- def update
-  @game.update(state: params[:state])
-  render 'home/index'
- end
+  def update
+    @game.update(state: params[:state])
+    render 'home/index'
+  end
 
  private
 
- def set_game
-   @game = Game.find_by(params[:id])
- end
-   
+  def set_game
+    @game = Game.find_by(params[:id])
+  end
+
 end
