@@ -1,16 +1,12 @@
 class GamesController < ApplicationController
 
-  before_action :set_game, only: [:show, :update, :edit]
+  before_action :set_game, only: [:show, :update]
   
   def index 
     @games = Game.all
     render json: @games
   end
   
-  def new
-    @game = Game.new
-  end
-
   def create
     @game = Game.create(state: params[:state])
     render 'home/index'
@@ -18,10 +14,6 @@ class GamesController < ApplicationController
 
   def show
     render json: @game
-  end
-
-  def edit
-
   end
 
   def update
