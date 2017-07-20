@@ -39,6 +39,7 @@ Rails.application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
+  resources :games, only: [:create, :show, :update, :index]
 
   # Example resource route with concerns:
   #   concern :toggleable do
