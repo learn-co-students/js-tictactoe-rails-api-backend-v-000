@@ -1,3 +1,6 @@
+#HAHAHAHHAHAHAHAHA
+
+
 class GamesController < ApplicationController
   before_action :find_game, only: [:show, :update]
 
