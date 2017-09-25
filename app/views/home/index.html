@@ -23,3 +23,17 @@
 <button id="save">Save Game</button>
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('form').submit(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/games', values);
+      posting.done(function(data) {
+        var product = data;
+        $("#games").text(product["game"]);
+      });
+    });
+  });
+</script>
