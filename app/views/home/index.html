@@ -23,3 +23,45 @@
 <button id="save">Save Game</button>
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
+
+<script type="text/javascript" charset="utf-8">
+	$(function() {
+	  $("#previous").on("click", function() {
+	    $.get("/games" + ".json", function(data) {
+
+				var games = data["data"];
+				var gamesList = "";
+				games.forEach(function(game) {
+					gamesList += '<li class="js-game" data-id="' + game["id"] + '">' + '<a href=' + game["id"] + '>' + game["id"] + '</a>' + '</li>';
+				});
+				$("#games").html(gamesList);
+	    });
+	  });
+	});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $(".js-game").on("click", function() {
+    var gameId = parseInt($(".js-game").attr("data-id"));
+    $.get("/games/" + gameId + ".json", function(data) {
+      var game = data;
+			debugger
+    });
+  });
+});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    $('#save').click(function(event) {
+      event.preventDefault();
+      var values = $(this).serialize();
+      var posting = $.post('/games', values);
+      posting.done(function(data) {
+        var product = data
+				debugger
+      })
+    })
+  })
+</script>
