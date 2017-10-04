@@ -8,18 +8,23 @@ class GamesController < ApplicationController
   end
 
   def show
-   @game = Game.find(params[:id])
+    @game = Game.find(params[:id])
    render json: @game
   end
 
   def create
-    @game = Game.create(state: params[:state])
-    render json: @game
+    @game = Game.create(game_params)
+    render json: @game, status: 201
   end
 
   def update
     @game = Game.find(params[:id])
-    @game.update(state: params[:state])
+    @game.update(game_params)
     render json: @game
+  end
+
+  private
+  def game_params
+    params.permit(state: [])
   end
 end
