@@ -8,6 +8,7 @@ class GamesController < ApplicationController
 
   def test_index
     @games = Game.all
+    @boards = Game.all_boards
     render 'home/test_index'
   end
 
