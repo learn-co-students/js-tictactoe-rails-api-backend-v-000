@@ -6,6 +6,11 @@ class GamesController < ApplicationController
     render json: @games 
   end
 
+  def test_index
+    @games = Game.all
+    render 'home/test_index'
+  end
+
   def show 
     render json: @game
   end
@@ -17,7 +22,7 @@ class GamesController < ApplicationController
   
   def create
     binding.pry 
-    
+
     @game = Game.new(game_params)
     if @game.save
       render json: @game
