@@ -1,9 +1,8 @@
 <div id="test-games">
   <h3>Number of games: <%= Game.count %></h3>
 </div>
-
-<% @boards.each_with_index do |b,i| %>
-  <% board = b[1] %>
+<% @games.each do |game| %>
+  <% board = game.board %>
   <table border="1" cellpadding="40">
     <tr>
       <td data-x="0" data-y="0" width="20"><%= board[0] %></td>
@@ -21,8 +20,7 @@
       <td data-x="2" data-y="2" width="20"><%= board[8] %></td>
     </tr>
   </table>
-  <!-- <%# binding.pry %> -->
-<!-- <h4>Turn count: <%#= Game.turns(board) %></h4> -->
+<h4>Turn count: <%= game.turns %></h4>
   <hr>
   <% end %>
 

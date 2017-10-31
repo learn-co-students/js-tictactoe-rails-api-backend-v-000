@@ -8,7 +8,6 @@ class GamesController < ApplicationController
 
   def test_index
     @games = Game.all
-    @boards = Game.all_boards
     render 'home/test_index'
   end
 
@@ -22,8 +21,6 @@ class GamesController < ApplicationController
   end 
   
   def create
-    binding.pry 
-
     @game = Game.new(game_params)
     if @game.save
       render json: @game
@@ -43,12 +40,13 @@ class GamesController < ApplicationController
   def destroy 
     # render.json
   end
+  
   private 
-  def set_game 
-    @game = Game.find(params[:id])
-  end
+    def set_game 
+      @game = Game.find(params[:id])
+    end
 
-  def game_params
-    params.require(:game).permit(:state)
-  end
+    def game_params
+      params.require(:game).permit(:state)
+    end
 end
