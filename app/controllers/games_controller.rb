@@ -21,7 +21,7 @@ class GamesController < ApplicationController
   end 
   
   def create
-    @game = Game.new(game_params)
+    @game = Game.new(state: params["state"])
     if @game.save
       render json: @game
     else 
@@ -30,23 +30,20 @@ class GamesController < ApplicationController
   end
   
   def edit 
-    # render json: @game
-  end 
-  
-  def update 
     render json: @game
   end 
   
-  def destroy 
-    # render.json
-  end
+  def update 
+    @game.update(state: params["state"])
+    @game.save
+    render json: @game
+  end 
   
+  def destroy
+  end
+
   private 
     def set_game 
       @game = Game.find(params[:id])
-    end
-
-    def game_params
-      params.require(:game).permit(:state)
     end
 end
