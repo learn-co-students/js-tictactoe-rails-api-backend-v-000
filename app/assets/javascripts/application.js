@@ -11,4 +11,5 @@
 // about supported directives.
 //
 //= require jquery
+//= require home
 //= require jquery_ujs
