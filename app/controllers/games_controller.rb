@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :find_game, only: [:show, :edit, :destroy, :update]
+  before_action :set_game, only: [:show, :update]
   def create
     game = Game.create(game_params)
     render json: game, status: 201
@@ -23,7 +23,7 @@ class GamesController < ApplicationController
     params.permit(state: [])
   end
 
-  def find_game
+  def set_game
     game = Game.find(params[:id])
   end
 
