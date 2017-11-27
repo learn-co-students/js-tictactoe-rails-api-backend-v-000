@@ -7,15 +7,17 @@ class GamesController < ApplicationController
   end
 
   def show
-
+    render json: @game
   end
 
   def update
-
+    @game.state = params[:state]
+    @game.save
+    render json: @game
   end
 
   def index
-
+    render json: Game.all
   end
 
   private
@@ -25,7 +27,7 @@ class GamesController < ApplicationController
   end
 
   def get_game
-    game = Game.find(params[:id])
+    @game = Game.find(params[:id])
   end
 
 end
