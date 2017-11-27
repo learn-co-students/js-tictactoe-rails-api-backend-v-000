@@ -1,10 +1,8 @@
 class GamesController < ApplicationController
   before_action :find_game, only: [:show, :edit, :destroy, :update]
   def create
-    byebug
-    game = Game.create(state: game_params)
-
-    render json: game
+    game = Game.create(game_params)
+    render json: game, status: 201
   end
 
   def show
@@ -22,7 +20,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:state) 
+    params.permit(state: [])
   end
 
   def find_game
