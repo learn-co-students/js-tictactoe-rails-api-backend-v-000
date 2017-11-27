@@ -11,8 +11,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game.state = params[:state]
-    @game.save
+    @game.update(game_params)
     render json: @game
   end
 
