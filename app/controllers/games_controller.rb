@@ -4,9 +4,7 @@ class GamesController < ApplicationController
     @games = Game.all
     render json: @games
   end
-  # def new
-  #   @game = Game.new
-  # end
+ 
   def create
     # binding.pry
     @game = Game.create(game_params)
@@ -21,14 +19,15 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(game_params)
-    render json: @game
+    @updategame = @game.update(game_params)
+    
+    render json: @updategame
   end
 
   private
 
   def game_params
-    params.permit(:state)
+    params.permit(state: [])
 
   end
 
