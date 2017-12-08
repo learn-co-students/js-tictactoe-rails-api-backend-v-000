@@ -9,7 +9,7 @@ class GamesController < ApplicationController
   end
 
   def create
-
+    Game.create(state: ["X", "", "", "", "", "", "", "", ""])
     render :'home/index'
   end
 
