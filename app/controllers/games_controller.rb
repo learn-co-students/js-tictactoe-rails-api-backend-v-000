@@ -2,13 +2,13 @@ class GamesController < ApplicationController
   # Add your GamesController code here
   def index
     @games = Game.all
-    render :'home/index'
+    render json: @games
   end
 
   def show
     @game = Game.find_by(id:params[:id])
-    render :'home/index'
-  end
+   render json: @game
+ end
 
   def create
     Game.create(state: ["X", "", "", "", "", "", "", "", ""])
