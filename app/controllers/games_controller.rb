@@ -3,22 +3,22 @@ class GamesController < ApplicationController
   
   def index
     @games = Game.all
-    render json: @games, :layout => false
+    render json: @games
   end
 
   def create
     @game = Game.create(game_params)
-    render json: @game, status: 201, :layout => false
+    render json: @game, status: 201
   end
 
   def show
-    render json: @game, :layout => false
+    render json: @game
   end
 
   def update
     @game.update(game_params)
     if @game.save
-      render json: @game, status: 201, :layout => false
+      render json: @game
     else
       render root_path
     end
