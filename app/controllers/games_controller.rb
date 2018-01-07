@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   def create
     # binding.pry
     @game = Game.create(game_params)
-    render json: @game
+    render json: @game, status: 201
   end
 
   def show
@@ -27,7 +27,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(state: [])
+    params.require(:game).permit(state: [])
 
   end
 
