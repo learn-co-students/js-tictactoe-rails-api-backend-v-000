@@ -18,7 +18,6 @@ RSpec.describe GamesController, :type => :controller do
       post :create, {
         :state => ["X", "", "", "", "", "", "", "", ""]
       }
-
       expect(Game.last.state).to eq ["X", "", "", "", "", "", "", "", ""]
     end
   end
@@ -51,7 +50,6 @@ RSpec.describe GamesController, :type => :controller do
   describe "#update" do
     it "persists changes to a previously-saved game's state (as players make additional moves)" do
       game = Game.create(:state => ["X", "", "", "", "", "", "", "", ""])
-
       patch :update, {
         :id => game.id,
         :state => ["X", "O", "", "", "", "", "", "", ""]
