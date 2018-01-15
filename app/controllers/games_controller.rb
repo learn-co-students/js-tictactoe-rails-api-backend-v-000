@@ -1,4 +1,42 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
 
+
+
+  def index
+    @games = Game.all
+    render json: @games
+  end
+
+  def create
+    @game = Game.create(game_params)
+    # if @game.save
+    #   redirect_to
+    # else
+      render json: @game
+  end
+
+  def update
+    @game = Game.find(params[:id])
+    @game.update(game_params)
+    render json: @game
+  end
+
+  def show
+    # @game = Game.find(params[:id])
+    # respond_to do |format|
+    #   format.html { render :show }
+    #   format.json { render :json }
+    # end
+    @game = Game.find(params[:id])
+    render json: @game
+  end
+
+
+  private
+
+    def game_params
+      params.permit(state: [])
+    end
+
 end
