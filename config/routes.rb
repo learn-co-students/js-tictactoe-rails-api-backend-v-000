@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  post '/games', to: 'games#create'
+  get '/games/:id.json', to: 'games#show'
+  patch '/games/:id', to: 'games#update'
+  get '/games', to: 'games#index'
+
+
   # You can have the root of your site routed with "root"
   root 'home#index'
 
