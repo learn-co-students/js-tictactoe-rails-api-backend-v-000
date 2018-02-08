@@ -2,8 +2,8 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :update]
 
   def index
-    @games = Game.all
-    render json: @games
+    games = Game.all
+    render json: games
   end
 
   def show
@@ -11,14 +11,13 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(game_params)
-    render json: @game
+    game = Game.create(game_params)
+    render json: game, status: 201
   end
 
   def update
-    if @game.update(game_params)
-      render json: @game
-    end
+    @game.update(game_params)
+    render json: @game
   end
 
   private
