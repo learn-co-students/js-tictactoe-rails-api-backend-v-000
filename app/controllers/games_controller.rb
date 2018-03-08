@@ -1,12 +1,14 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
 
+  def index
+    @games = Game.all
+    render json: @games
+  end
+
   def show
-    @game = Game.find(params[:id]) || Game.all.first
-    respond_to do |format|
-      format.html { render :index }
-      format.json { render json: @game }
-    end
+    @game = Game.find(params[:id])
+    render json: @game
   end
 
   def create
@@ -17,8 +19,8 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(params)
-    render 'home/index'
+    @game.update(game_params)
+    render json: @game
   end
 
   private
