@@ -3,7 +3,10 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id]) || Game.all.first
-    render 'home/index'
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @game }
+    end
   end
 
   def create
