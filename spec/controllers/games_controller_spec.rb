@@ -7,7 +7,6 @@ RSpec.describe GamesController, :type => :controller do
 
   describe "#create" do
     it "can create a new Game instance" do
-      binding.pry
       post :create, {
         :state => ["X", "", "", "", "", "", "", "", ""]
       }

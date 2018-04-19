@@ -3,6 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
+    render json: @games, status: 201
   end
 
   def create
@@ -24,6 +25,6 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.require(:game).permit(:state)
+    params.require(:state)
   end
 end
