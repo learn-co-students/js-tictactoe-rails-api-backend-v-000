@@ -24,7 +24,7 @@ class GamesController < ApplicationController
 
   private
 
-  def game_params
-    params.permit(:state)
-  end
+  # def game_params
+  #   params.permit(:state)
+  # end
 end
