@@ -2,7 +2,7 @@ class GamesController < ApplicationController
 
   #Create — POST — /games
   def create
-    @game = Game.create(state: params[:state])
+    @game = Game.create(game_params)
     render json: @game, status: 201
   end
 
@@ -15,8 +15,7 @@ class GamesController < ApplicationController
   #Update — PATCH — /games/:id
   def update
     @game = Game.find(params[:id])
-    @game.update(state: params[:state])
-    @game.save
+    @game.update(game_params)
     render json: @game
   end
 
@@ -29,7 +28,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(:state)
+    params.permit(state: [])
   end
 
 end
