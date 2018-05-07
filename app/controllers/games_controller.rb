@@ -3,11 +3,11 @@ class GamesController < ApplicationController
 
   def index
     games = Game.all
-    render json: games, status: 201
+    render json: games
   end
 
   def show
-    render json: @game, status: 201
+    render json: @game
   end
 
   def create
@@ -17,7 +17,7 @@ class GamesController < ApplicationController
 
   def update
     @game.update(game_params)
-    render json: @game, status: 201
+    render json: @game
   end
 
   private
