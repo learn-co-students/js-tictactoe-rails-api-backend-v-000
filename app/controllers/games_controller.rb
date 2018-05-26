@@ -26,4 +26,8 @@ class GamesController < ApplicationController
   def find_game
   	@game = Game.find(params[:id])
   end
+
+  def game_params
+  	params.require(:game).permit(:state)
+  end
 end
