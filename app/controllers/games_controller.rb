@@ -3,8 +3,8 @@ class GamesController < ApplicationController
 
   
   def create
-    @game = Game.create(game_params)
-    render json: @game, status: 201
+    game = Game.create(game_params)
+    render json: game, status: 201
   end
 
   def show
@@ -18,7 +18,7 @@ class GamesController < ApplicationController
 
   def index
     games = Game.all
-    render json: @games
+    render json: games
   end
 
   def new
