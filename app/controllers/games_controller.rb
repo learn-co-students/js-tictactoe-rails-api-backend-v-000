@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   end
 
   def show
-    render json: @game, status: 201
+    render json: @game
   end
 
   def update
@@ -17,8 +17,8 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = Game.all
-    render json: @games, status: 201
+    games = Game.all
+    render json: @games
   end
 
   def new
