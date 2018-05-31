@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
+  get '/games', to: 'games#index'
+  get '/games/:id', to: 'games#show'
+  post '/games', to: 'games#create'
+  patch '/games/:id', to: 'games#update'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
