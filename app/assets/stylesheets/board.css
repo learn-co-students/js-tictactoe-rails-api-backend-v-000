@@ -1,0 +1,17 @@
+body {
+	background-color: #e6ffcc;
+	width: 100%;
+}
+
+table {
+	margin: 0 auto;
+	padding-top: 200px;
+}
+
+td {
+	border: 3px solid coral; 
+	border-radius: 10px;
+	background-color: white;
+	width: 80px;
+	height: 80px;
+}
