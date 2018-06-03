@@ -1,7 +1,5 @@
 class Game < ActiveRecord::Base
+	serialize :state, Array
 
-	def initialize
-		@state = ["", "", "", "", "", "", "", "", ""]
-	end
 	
 end
