@@ -27,9 +27,10 @@ class GamesController < ApplicationController
 
   def show
   	binding.pry
-    respond_to do |format|
-      format.html { render "home/index" }
-      format.json { render json: @game, status: 200 }
+    # respond_to do |format|
+      # format.html { render :index }
+      # format.json { render json: @game, status: 200 }
+    render json: @game, status: 200 
     end
   end
 
