@@ -29,6 +29,7 @@ RSpec.describe GamesController, :type => :controller do
 
       get :show, id: game.id
       returned_json = response.body
+      binding.pry
       parsed_json = JSON.parse(returned_json)
 
       correctly_serialized_json = {
