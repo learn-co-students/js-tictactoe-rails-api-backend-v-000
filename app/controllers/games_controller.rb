@@ -2,8 +2,7 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update]
 
   def index
-  	@games = Games.all
-    render "home/index"
+    
   end
 
   def new
@@ -27,11 +26,11 @@ class GamesController < ApplicationController
 
   def show
   	binding.pry
-    # respond_to do |format|
-      # format.html { render :index }
-      # format.json { render json: @game, status: 200 }
-    render json: @game, status: 200 
-    end
+  	render json: @game, status: 200
+  	# respond_to do |format|	
+   #    format.json { render json: @game, status: 200 }
+   #    format.html { render "home/index"}
+   #  end
   end
 
   private
@@ -43,7 +42,8 @@ class GamesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
-    params.require(:game).permit(:state => {})
+    params.require(:game).permit(:state)
+   
   end
 
 end
