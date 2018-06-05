@@ -25,12 +25,8 @@ class GamesController < ApplicationController
   end
 
   def show
-  	binding.pry
+  	@game = JSONAPI::Serializer.serialize(@game)
   	render json: @game, status: 200
-  	# respond_to do |format|	
-   #    format.json { render json: @game, status: 200 }
-   #    format.html { render "home/index"}
-   #  end
   end
 
   private

@@ -70,6 +70,8 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.6)
     jsonapi-renderer (0.1.2)
+    jsonapi-serializers (1.0.0)
+      activesupport
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.6)
@@ -176,6 +178,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   jquery-rails
+  jsonapi-serializers
   pry
   pry-byebug
   rails (= 4.2.5.1)

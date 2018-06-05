@@ -1,3 +1,5 @@
-class GameSerializer < ActiveModel::Serializer
-  attributes :id, :state
+class GameSerializer
+  include JSONAPI::Serializer
+
+  attributes :state
 end
