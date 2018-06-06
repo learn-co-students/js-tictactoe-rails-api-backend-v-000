@@ -33,18 +33,15 @@ RSpec.describe GamesController, :type => :controller do
 
       correctly_serialized_json = {
         "data" => {
-          "type" => "games",
           "id" => game.id.to_s,
+          "type" => "games",
           "attributes" => {
             "state" => ["", "", "", "", "", "O", "", "", "X"]
-          }, 
-          "links"=>{"self"=>"/games/1"
           }
-        }
-        # },
-        # "jsonapi" => {
-        #   "version" => "1.0"
-        # }
+        },
+        "jsonapi" => {
+          "version" => "1.0"
+        }  
       }
 
       expect(parsed_json).to eq(correctly_serialized_json)

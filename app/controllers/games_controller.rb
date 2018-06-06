@@ -10,7 +10,6 @@ class GamesController < ApplicationController
   end
 
   def create
-  # 	raise params.inspect
     @game = Game.create(:state => params[:state])
     @game.save
     render json: @game, status: 201
@@ -25,7 +24,6 @@ class GamesController < ApplicationController
   end
 
   def show
-  	@game = JSONAPI::Serializer.serialize(@game)
   	render json: @game, status: 200
   end
 
