@@ -2,7 +2,8 @@ class GamesController < ApplicationController
   before_action :set_game, only: [:show, :edit, :update]
 
   def index
-    
+    @games = Game.all
+    render json: @games
   end
 
   def new
@@ -10,7 +11,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.create(:state => params[:state])
+    @game = Game.create(game_params)
     @game.save
     render json: @game, status: 201
   end
@@ -20,11 +21,11 @@ class GamesController < ApplicationController
 
   def update
     @game.update(game_params)
-    redirect_to post_path(@game)
+    redirect_to game_path(@game)
   end
 
   def show
-  	render json: @game, status: 200
+  	render json: @game
   end
 
   private
@@ -36,8 +37,7 @@ class GamesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
-    params.require(:game).permit(:state)
-   
+    params.permit(:state => [])
   end
 
 end
