@@ -41,7 +41,7 @@ RSpec.describe GamesController, :type => :controller do
         },
         "jsonapi" => {
           "version" => "1.0"
-        }
+        }  
       }
 
       expect(parsed_json).to eq(correctly_serialized_json)

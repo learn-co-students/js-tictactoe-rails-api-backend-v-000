@@ -1,4 +1,43 @@
 class GamesController < ApplicationController
-  # Add your GamesController code here
+  before_action :set_game, only: [:show, :edit, :update]
+
+  def index
+    @games = Game.all
+    render json: @games
+  end
+
+  def new
+    @game = Game.new
+  end
+
+  def create
+    @game = Game.create(game_params)
+    @game.save
+    render json: @game, status: 201
+  end
+
+  def edit
+  end
+
+  def update
+    @game.update(game_params)
+    redirect_to game_path(@game)
+  end
+
+  def show
+  	render json: @game
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_game
+    @game = Game.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def game_params
+    params.permit(:state => [])
+  end
 
 end
