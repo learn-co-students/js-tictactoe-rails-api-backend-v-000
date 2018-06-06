@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :update]
+  before_action :set_game, only: [:show, :update]
 
   def index
     @games = Game.all
@@ -14,9 +14,6 @@ class GamesController < ApplicationController
     @game = Game.create(game_params)
     @game.save
     render json: @game, status: 201
-  end
-
-  def edit
   end
 
   def update
