@@ -19,7 +19,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game.update(post_params)
+    @game.update(game_params)
     redirect_to post_path(@game)
   end
 
