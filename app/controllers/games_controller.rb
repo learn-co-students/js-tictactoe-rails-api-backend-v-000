@@ -6,23 +6,18 @@ class GamesController < ApplicationController
     render json: @games
   end
 
-  def new
-    @game = Game.new
+  def show
+    render json: @game
   end
 
   def create
     @game = Game.create(game_params)
-    @game.save
     render json: @game, status: 201
   end
 
   def update
     @game.update(game_params)
-    redirect_to game_path(@game)
-  end
-
-  def show
-  	render json: @game
+    render json: @game
   end
 
   private
