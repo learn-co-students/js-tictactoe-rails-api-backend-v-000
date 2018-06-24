@@ -8,7 +8,9 @@ RSpec.describe GamesController, :type => :controller do
   describe "#create" do
     it "can create a new Game instance" do
       post :create, {
-        :state => ["X", "", "", "", "", "", "", "", ""]
+        game: {
+          :state => ["X", "", "", "", "", "", "", "", ""]
+        }
       }
 
       expect(Game.count).to eq(1)
@@ -16,7 +18,9 @@ RSpec.describe GamesController, :type => :controller do
 
     it "properly serializes the 'state' attribute as an array instead of as a string" do
       post :create, {
-        :state => ["X", "", "", "", "", "", "", "", ""]
+        game: {
+          :state => ["X", "", "", "", "", "", "", "", ""]
+        }
       }
 
       expect(Game.last.state).to eq ["X", "", "", "", "", "", "", "", ""]
@@ -54,7 +58,9 @@ RSpec.describe GamesController, :type => :controller do
 
       patch :update, {
         :id => game.id,
-        :state => ["X", "O", "", "", "", "", "", "", ""]
+        game: {
+          :state => ["X", "O", "", "", "", "", "", "", ""]
+        }
       }
 
       expect(Game.find(game.id).state).to eq ["X", "O", "", "", "", "", "", "", ""]
