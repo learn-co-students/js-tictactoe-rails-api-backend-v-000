@@ -5,10 +5,14 @@ class GamesController < ApplicationController
   end
 
   def create()
-    Game.create()
-    render '/home/index'
+    game=Game.create(game_params)
+    render json: game, status: 201
   end
 
   def index
+  end
+
+  def game_params
+    params.permit(state: [])
   end
 end
