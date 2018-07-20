@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'home#index'
-  resources :games, except: [:new, :delete]
+  resources :games, except: [:new, :delete, :edit]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
