@@ -1,10 +1,15 @@
-Rails.application.routes.draw do
+ails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'home#index'
 
+  post '/games' => 'games#create'
+  get '/games/:id' => 'games#show'
+  patch '/games/:id' => 'games#update'
+  get '/games' => 'games#index'
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
