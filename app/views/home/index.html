@@ -23,3 +23,21 @@
 <button id="save">Save Game</button>
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
+
+<script type="text/javascript">
+	$(function(){
+		let turn = 0
+		$('td').on("click", function(data){
+			if (turn%2){
+				this.innerHTML = "X";
+				turn++;
+			} else {
+				this.innerHTML = "O";
+				turn++;
+			}
+		});
+
+	});
+
+
+</script>
