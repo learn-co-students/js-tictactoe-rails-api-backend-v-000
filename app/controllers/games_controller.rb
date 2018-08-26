@@ -1,4 +1,7 @@
 class GamesController < ApplicationController
-  # Add your GamesController code here
+# Create — POST — /games
+# Show — GET — /games/:id
+# Update — PATCH — /games/:id
+# Index — GET — /games
 
 end
