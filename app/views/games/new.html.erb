@@ -1,0 +1,24 @@
+<h1>New Game</h1>
+<%= form_for @game do |f| %>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+    <%= f.submit "submit" %>
+<% end %>
+
+<div id="gameResult">
+    <h2 id="gameState"></h2>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+$(function() {
+    $('.form').submit(function(event) {
+        event.preventDefault();
+        var values = $(this).serialize();
+        var posting = $.post('/games', values);
+        posting.done(function(data) {
+            var game = data;
+            $("#gameState").text(game['state']); 
+        });
+    });
+});
+</script>
