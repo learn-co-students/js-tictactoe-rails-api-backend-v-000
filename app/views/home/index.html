@@ -1,18 +1,18 @@
 <table border="1" cellpadding="40">
 	<tr>
-		<td data-x="0" data-y="0"></td>
-		<td data-x="1" data-y="0"></td>
-		<td data-x="2" data-y="0"></td>
+		<td data-x="0" data-y="0" id="1"></td>
+		<td data-x="1" data-y="0" id="2"></td>
+		<td data-x="2" data-y="0" id="3"></td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="1"></td>
-		<td data-x="1" data-y="1"></td>
-		<td data-x="2" data-y="1"></td>
+		<td data-x="0" data-y="1" id="4"></td>
+		<td data-x="1" data-y="1" id="5"></td>
+		<td data-x="2" data-y="1" id="6"></td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="2"></td>
-		<td data-x="1" data-y="2"></td>
-		<td data-x="2" data-y="2"></td>
+		<td data-x="0" data-y="2" id="7"></td>
+		<td data-x="1" data-y="2" id="8"></td>
+		<td data-x="2" data-y="2" id="9"></td>
 	</tr>
 </table>
 
@@ -24,12 +24,18 @@
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
 
+<div id="a"></div>
 
 <script type="text/javascript" charset="utf-8">
 		$(function () {
 	    $("td").on("click", function() {
-				
+			var spot = $(this).serialize();
+      var posting = $.post('/games', spot);
+			posting.done(function(data) {
+				var clicked = data["id"]
+				$(`#${data["id"]}`).text("X");
+			});
 		 });
-
+ 		});
 
 </script>
