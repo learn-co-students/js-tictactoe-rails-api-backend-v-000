@@ -1,8 +1,5 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
-  def new
-    @game = Game.new
-  end
 
   def create
     @game = Game.create(state: ["", "", "", "", "", "", "", "", ""])
@@ -17,11 +14,8 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     respond_to do |format|
      format.html { render :show }
-     format.json { render json: @game }
+     format.json { render json: @game, status: 200 }
    end
-  end
-
-  def edit
   end
 
   def update
@@ -30,7 +24,7 @@ class GamesController < ApplicationController
     @game.save
     respond_to do |format|
      format.html { render :show }
-     format.json { render json: @game }
+     format.json { render json: @game, status: 200 }
    end
   end
 

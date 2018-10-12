@@ -1,3 +1,4 @@
+
 <table border="1" cellpadding="40">
 	<tr>
 		<td data-x="0" data-y="0" id="1"></td>
@@ -29,11 +30,12 @@
 <script type="text/javascript" charset="utf-8">
 		$(function () {
 	    $("td").on("click", function() {
-			var spot = $(this).serialize();
-      var posting = $.post('/games', spot);
+			var a = $(this).serialize();
+			var spot = this["id"]
+      var posting = $.post('/games', a);
 			posting.done(function(data) {
-				var clicked = data["id"]
-				$(`#${data["id"]}`).text("X");
+				console.log(data)
+				$(`#${spot}`).text("X");
 			});
 		 });
  		});
