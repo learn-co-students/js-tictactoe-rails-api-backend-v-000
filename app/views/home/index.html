@@ -35,7 +35,7 @@
 			var spot = this["id"]
 			var gameId = parseInt($("table").attr("data-id"))
       var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: a})
+			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json'})
 			rEmpty = $("td:empty")
 				if (rEmpty.length === 9) {
 					postingNewGame.done(function(data) {
@@ -49,7 +49,7 @@
 						$(`#${spot}`).text("X");
 						data["data"]["attributes"]["state"][`${spot}`] = "X"
 						console.log(data["data"]["attributes"]["state"])
-						console.log(data["data"]["id"])
+
 					});
 				};
 
