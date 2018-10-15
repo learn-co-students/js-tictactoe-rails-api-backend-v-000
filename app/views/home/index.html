@@ -34,12 +34,12 @@
 			var a = $(this).serialize();
 			var spot = this["id"]
 			var gameId = parseInt($("table").attr("data-id"))
-			var state = $("td").map(function(r) { return r["data-id"]})
-			console.log(state)
+			var state = $("td").map(function(r) { return $(r).text()}).toArray()
+			state[this.dataset.id] = "X"
       var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: {state: []}})
+			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: {state: state}})
 			rEmpty = $("td:empty")
-
+			console.log(rEmpty)
 				if (rEmpty.length === 9) {
 					postingNewGame.done(function(data) {
 						$(`#${spot}`).text("X");
