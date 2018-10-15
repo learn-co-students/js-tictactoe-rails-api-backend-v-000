@@ -1,19 +1,19 @@
 
 <table border="1" cellpadding="40" data-id="<%= @game.id %>">
 	<tr>
-		<td data-x="0" data-y="0" id="1"></td>
-		<td data-x="1" data-y="0" id="2"></td>
-		<td data-x="2" data-y="0" id="3"></td>
+		<td data-x="0" data-y="0" data-id="0"> </td>
+		<td data-x="1" data-y="0" data-id="1"> </td>
+		<td data-x="2" data-y="0" data-id="2"> </td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="1" id="4"></td>
-		<td data-x="1" data-y="1" id="5"></td>
-		<td data-x="2" data-y="1" id="6"></td>
+		<td data-x="0" data-y="1" data-id="3"></td>
+		<td data-x="1" data-y="1" data-id="4"></td>
+		<td data-x="2" data-y="1" data-id="5"></td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="2" id="7"></td>
-		<td data-x="1" data-y="2" id="8"></td>
-		<td data-x="2" data-y="2" id="9"></td>
+		<td data-x="0" data-y="2" data-id="6"></td>
+		<td data-x="1" data-y="2" data-id="7"></td>
+		<td data-x="2" data-y="2" data-id="8"></td>
 	</tr>
 </table>
 
@@ -34,22 +34,24 @@
 			var a = $(this).serialize();
 			var spot = this["id"]
 			var gameId = parseInt($("table").attr("data-id"))
+			var state = $("td").map(function(r) { return r["data-id"]})
+			console.log(state)
       var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json'})
+			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: {state: []}})
 			rEmpty = $("td:empty")
+
 				if (rEmpty.length === 9) {
 					postingNewGame.done(function(data) {
 						$(`#${spot}`).text("X");
 						data["data"]["attributes"]["state"][`${spot}`] = "X"
-						console.log(data["data"]["id"])
 					});
 				}
+
 				if (rEmpty.length < 9) {
 					postingUpdateGame.done(function(data) {
 						$(`#${spot}`).text("X");
 						data["data"]["attributes"]["state"][`${spot}`] = "X"
 						console.log(data["data"]["attributes"]["state"])
-
 					});
 				};
 
