@@ -34,18 +34,18 @@
 			var spot = this["id"]
 			var gameId = parseInt($("table").attr("data-id"))
       var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.post(`/games/${gameId}` + ".json", a);
+			var postingUpdateGame = $.post('/games', gameId);
 			r = document.getElementsByTagName("td")
 			rEmpty = $("td:empty")
 				if (rEmpty.length === 9) {
 					postingNewGame.done(function(data) {
 						$(`#${spot}`).text("X");
-						console.log(gameId)
 					});
 				}
 				if (rEmpty.length < 9) {
 					postingUpdateGame.done(function(data) {
-						console.log(data)
+						data["data"]["attributes"]["state"][`${spot}`] = "X"
+						console.log(data["data"]["attributes"]["state"])
 					});
 				};
 
