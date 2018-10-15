@@ -1,5 +1,5 @@
 
-<table border="1" cellpadding="40">
+<table border="1" cellpadding="40" data-id="<%= @game.id %>">
 	<tr>
 		<td data-x="0" data-y="0" id="1"></td>
 		<td data-x="1" data-y="0" id="2"></td>
@@ -32,17 +32,22 @@
 	    $("td").on("click", function() {
 			var a = $(this).serialize();
 			var spot = this["id"]
-      var posting = $.post('/games', a);
+			var gameId = parseInt($("table").attr("data-id"))
+      var postingNewGame = $.post('/games', a);
+			var postingUpdateGame = $.post(`/games/${gameId}` + ".json", a);
 			r = document.getElementsByTagName("td")
-			$.each(r, function(i, v) {
-				if (v.innerHTML === "") {
-				posting.done(function(data) {
-					console.log(data)
-					$(`#${spot}`).text("X");
-					console.log(this)
-			});
-			}
-			});
+			rEmpty = $("td:empty")
+				if (rEmpty.length === 9) {
+					postingNewGame.done(function(data) {
+						$(`#${spot}`).text("X");
+						console.log(gameId)
+					});
+				}
+				if (rEmpty.length < 9) {
+					postingUpdateGame.done(function(data) {
+						console.log(data)
+					});
+				};
 
 		 });
  		});
