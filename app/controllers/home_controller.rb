@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @game = Game.new
+    @game = Game.create
   end
 end

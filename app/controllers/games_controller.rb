@@ -2,7 +2,9 @@ class GamesController < ApplicationController
   # Add your GamesController code here
 
   def create
-    @game = Game.create(state: ["", "", "", "", "", "", "", "", ""])
+    @game = Game.create(game_params)
+    @game.state = ["", "", "", "", "", "", "", "", ""]
+    @game.save
     render json: @game, status: 201
   end
 
@@ -20,7 +22,7 @@ class GamesController < ApplicationController
 
   def update
     @game = Game.find(params[:id])
-    @game.update(:state)
+    @game.update(game_params)
     @game.save
     respond_to do |format|
      format.html { render :show }
@@ -31,7 +33,7 @@ class GamesController < ApplicationController
   private
 
   def game_params
-     params.require(:game).permit(:state, :created_at, :updated_at)
+     params.permit(:state, :created_at, :updated_at)
   end
 
 end

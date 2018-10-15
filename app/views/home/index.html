@@ -29,17 +29,18 @@
 
 <script type="text/javascript" charset="utf-8">
 		$(function () {
-	    $("td").on("click", function() {
+	    $("td").on("click", function(e) {
+				e.preventDefault();
 			var a = $(this).serialize();
 			var spot = this["id"]
 			var gameId = parseInt($("table").attr("data-id"))
       var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.post('/games', "PATCH", gameId);
-			r = document.getElementsByTagName("td")
+			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: a})
 			rEmpty = $("td:empty")
 				if (rEmpty.length === 9) {
 					postingNewGame.done(function(data) {
 						$(`#${spot}`).text("X");
+						data["data"]["attributes"]["state"][`${spot}`] = "X"
 						console.log(data["data"]["id"])
 					});
 				}
@@ -48,6 +49,7 @@
 						$(`#${spot}`).text("X");
 						data["data"]["attributes"]["state"][`${spot}`] = "X"
 						console.log(data["data"]["attributes"]["state"])
+						console.log(data["data"]["id"])
 					});
 				};
 
