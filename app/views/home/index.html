@@ -1,19 +1,19 @@
 
-<table border="1" cellpadding="40" data-id="<%= @game.id %>">
+<table border="1" cellpadding="40">
 	<tr>
-		<td data-x="0" data-y="0" data-id="0"> </td>
-		<td data-x="1" data-y="0" data-id="1"> </td>
-		<td data-x="2" data-y="0" data-id="2"> </td>
+		<td data-x="0" data-y="0" > </td>
+		<td data-x="1" data-y="0" > </td>
+		<td data-x="2" data-y="0" > </td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="1" data-id="3"></td>
-		<td data-x="1" data-y="1" data-id="4"></td>
-		<td data-x="2" data-y="1" data-id="5"></td>
+		<td data-x="0" data-y="1" ></td>
+		<td data-x="1" data-y="1" ></td>
+		<td data-x="2" data-y="1" ></td>
 	</tr>
 	<tr>
-		<td data-x="0" data-y="2" data-id="6"></td>
-		<td data-x="1" data-y="2" data-id="7"></td>
-		<td data-x="2" data-y="2" data-id="8"></td>
+		<td data-x="0" data-y="2" ></td>
+		<td data-x="1" data-y="2" ></td>
+		<td data-x="2" data-y="2" ></td>
 	</tr>
 </table>
 
@@ -26,36 +26,3 @@
 <button id="clear">Clear Current Game</button>
 
 <div id="a"></div>
-
-<script type="text/javascript" charset="utf-8">
-		$(function () {
-	    $("td").on("click", function(e) {
-				e.preventDefault();
-			var a = $(this).serialize();
-			var spot = this["id"]
-			var gameId = parseInt($("table").attr("data-id"))
-			var state = $("td").map(function(r) { return $(r).text()}).toArray()
-			state[this.dataset.id] = "X"
-      var postingNewGame = $.post('/games', a);
-			var postingUpdateGame = $.ajax({url: `/games/${gameId}`, type: 'put', dataType: 'json', data: {state: state}})
-			rEmpty = $("td:empty")
-			console.log(rEmpty)
-				if (rEmpty.length === 9) {
-					postingNewGame.done(function(data) {
-						$(`#${spot}`).text("X");
-						data["data"]["attributes"]["state"][`${spot}`] = "X"
-					});
-				}
-
-				if (rEmpty.length < 9) {
-					postingUpdateGame.done(function(data) {
-						$(`#${spot}`).text("X");
-						data["data"]["attributes"]["state"][`${spot}`] = "X"
-						console.log(data["data"]["attributes"]["state"])
-					});
-				};
-
-		 });
- 		});
-
-</script>

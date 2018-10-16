@@ -1,39 +1,34 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
+  before_action :find_game, only: [:show, :update]
 
   def create
     @game = Game.create(game_params)
-    @game.state = ["", "", "", "", "", "", "", "", ""]
-    @game.save
     render json: @game, status: 201
   end
 
   def index
     @games = Game.all
+    render json: @games, status: 200
   end
 
   def show
-    @game = Game.find(params[:id])
-    respond_to do |format|
-     format.html { render :show }
-     format.json { render json: @game, status: 200 }
-   end
+    render json: @game, status: 200
   end
 
   def update
-    @game = Game.find(params[:id])
     @game.update(game_params)
-    @game.save
-    respond_to do |format|
-     format.html { render :show }
-     format.json { render json: @game, status: 200 }
-   end
+    render json: @game, status: 200
   end
 
   private
 
   def game_params
-     params.permit(:state, :created_at, :updated_at)
+     params.permit(state: [])
+  end
+
+  def find_game
+    @game = Game.find(params[:id])
   end
 
 end
