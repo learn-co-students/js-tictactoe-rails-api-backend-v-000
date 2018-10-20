@@ -9,7 +9,7 @@ RSpec.describe GamesController, :type => :controller do
     it "can create a new Game instance" do
       post :create, {
         :state => ["X", "", "", "", "", "", "", "", ""]
-      }
+      } 
 
       expect(Game.count).to eq(1)
     end
