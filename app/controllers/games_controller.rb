@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   def create #post /games
     @game = Game.create(game_params)
-    render @game, status: 201 #Created
+    render json: @game, status: 201 #Created
   end
 
   def show #get /games/:id
