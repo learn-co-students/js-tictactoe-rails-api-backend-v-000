@@ -1,16 +1,16 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
 
-  def index
+  def index #get /games
   end
 
-  def show
+  def create #post /games
   end
 
-  def create
-  end 
+  def show #get /games/:id
+  end
 
-  def update
+  def update #patch /games
   end
 
 end
