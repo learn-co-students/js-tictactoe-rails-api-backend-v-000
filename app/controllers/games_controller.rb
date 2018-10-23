@@ -2,6 +2,8 @@ class GamesController < ApplicationController
   # Add your GamesController code here
 
   def index #get /games
+    @games = Game.all
+    render json: games
   end
 
   def create #post /games
@@ -12,5 +14,10 @@ class GamesController < ApplicationController
 
   def update #patch /games
   end
+
+
+  private
+
+
 
 end
