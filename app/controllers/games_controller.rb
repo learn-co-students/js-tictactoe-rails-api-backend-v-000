@@ -3,7 +3,7 @@ class GamesController < ApplicationController
 
   def index
     @games = Game.all
-    render json: @games, status: 200
+    render json: @games
   end
 
   def new
@@ -11,19 +11,17 @@ class GamesController < ApplicationController
   end
 
   def create
-    Game.create(game_params)
-    redirect_to '/'
+    game = Game.create(game_params)
+    render json: game, status: 201
   end
 
   def show
-    render json: @game, status: 200
+    render json: @game
   end
 
   def update
     @game.update(game_params)
-    if @game.save
-      redirect_to '/'
-    end
+    render json: @game
   end
 
   private
@@ -32,6 +30,6 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.permit(:id, :state=>[])
+    params.permit(state:[])
   end
 end
