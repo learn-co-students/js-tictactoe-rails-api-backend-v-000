@@ -18,17 +18,17 @@ class GamesController < ApplicationController
 
   def create
     @game = Game.create(game_params)
-    render 'home/index', status: 201
+    render json: @game, status: 201
+    #or render 'home/index', status: 201
   end
 
   def edit
-
   end
 
   def update
     @game.update(game_params)
-    render 'home/index'
-    #or render json: @game, status: 202
+    render json: @game
+    #or render 'home/index'
   end
 
   private
