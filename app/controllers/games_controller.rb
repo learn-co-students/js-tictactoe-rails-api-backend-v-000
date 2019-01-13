@@ -8,7 +8,8 @@ class GamesController < ApplicationController
 # Index — GET — /games
   # def new
   #   @game = Game.new
-  # end
+  # end    
+  
 
   def create
     # binding.pry
