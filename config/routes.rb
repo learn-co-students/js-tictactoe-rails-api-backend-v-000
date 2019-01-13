@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
+ 
   root 'home#index'
-
+ #1 Add routes for game as specified in spec 
+ 
+  resources :games, only: [:show, :index, :create, :update]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
