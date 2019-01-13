@@ -1,5 +1,11 @@
 # jQuery Tic-Tac-Toe with a Rails API — Part 1
 
+#1 config/routes
+#2 app/controllers/games_controller
+#3 app/models/game.rb
+#4 config/initializers/active_model_serializers.rb
+#5 create serializer for game state with : 'rails g serializer Game state'
+
 This lab is the first half of a two-part challenge in which you're tasked with building a browser-based Tic-Tac-Toe game using jQuery and a Rails API.
 
 Once you're done with both labs, you should have a finished product that behaves like [this video](http://flatiron-videos.s3.amazonaws.com/Learn%20Curriculum%20Helpers/ttt.mov) (right-click and `Save Link As...` to download).
