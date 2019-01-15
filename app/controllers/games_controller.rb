@@ -1,5 +1,6 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
+  before_action :define_game, only: %i[show update]
 
   def index
     @games = Game.all
@@ -7,21 +8,15 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
     render json: @game, status: 200
   end
 
   def create
-    # binding.pry
-    @game = Game.new
-    @game.state = params[:state]
-    @game.save
-    binding.pry
-    render json: @game, status: 201
+    game = Game.create(game_params)
+    render json: game, status: 201
   end
 
   def update
-    @game = Game.find(params[:id])
     @game.update(state: params[:state])
     render json: @game, status: 200
   end
@@ -29,6 +24,10 @@ class GamesController < ApplicationController
   private 
 
   def game_params
-    params.permit(:state)
+    params.permit(state: [])
+  end
+
+  def define_game
+    @game = Game.find(params[:id])
   end
 end
