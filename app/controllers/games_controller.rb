@@ -20,10 +20,6 @@ class GamesController < ApplicationController
   	render json: @game, status: 200	
   end
 
-  # private
-
-  # def game_params
-  # 	params.require(:game).permit(:state)
-  # end
+ 
 
 end
