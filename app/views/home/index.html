@@ -26,5 +26,8 @@
 
 <script type="text/javascript" charset="utf-8">
 	$(function() {
-		$()
+		$('table').onClick(function(event){
+			event.preventDefault();
+			// if x.count > o.count, set token = x;
+		})
 	})
