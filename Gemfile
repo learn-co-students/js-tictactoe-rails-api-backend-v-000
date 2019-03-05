@@ -38,9 +38,10 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.0'
   gem 'pry'
+  gem 'rb-readline'
 
   # Adds step-by-step debugging and stack navigation capabilities to pry using byebug. To use, invoke pry normally.
-  
+
 end
 
 group :development do
