@@ -23,3 +23,51 @@
 <button id="save">Save Game</button>
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		// load new game
+		$.post('/games', function(data) {
+			var state = data.state
+			$("table").find("td").map(function(i, e) {
+				// fill the board with state values
+				// e.textContent = state[i]
+			})
+		})
+	})
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		$("#previous").click(function() {
+			$.get('/games.json', function(data) {
+				var ids = data.map( ())
+				var games = "<ul>"
+					+`${ids}`
+					+"</ul>";
+				$("#games").text(games);
+			});
+		});
+	});
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		$("#clear").click(function() {
+			$("table").find("td").empty();
+		})
+	})
+</script>
+
+<script type="text/javascript" charset="utf-8">
+	$(function () {
+		$("#save").click(function() {
+			var state = $("table").find("td").text().split("");
+			var update = $.post('/games/' + id, state)
+			update.done(function(data) {
+				var state = data.state
+				// fill in the board
+			})
+		})
+	})
+</script>
