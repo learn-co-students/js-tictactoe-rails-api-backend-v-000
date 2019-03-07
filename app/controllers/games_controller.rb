@@ -3,8 +3,8 @@ class GamesController < ApplicationController
   # Add your GamesController code here
 
   def index
-    @games = Game.all
-    render json: @games, status: 201
+    games = Game.all
+    render json: games
   end
 
   def new
@@ -18,13 +18,12 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find_by(params[:id])
-    render json: @game, status: 201
+    render json: @game
   end
 
   def update
     @game = Game.find_by(params[:id])
     @game.update(game_params)
-    @game.save
     render json: @game
   end
 
@@ -34,5 +33,4 @@ class GamesController < ApplicationController
   def game_params
     params.permit(state: [])
   end
-
 end
