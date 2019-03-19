@@ -1,3 +1,3 @@
 class GamesSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :state
 end
