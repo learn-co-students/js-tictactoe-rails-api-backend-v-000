@@ -40,7 +40,7 @@ group :development, :test do
   gem 'pry'
 
   # Adds step-by-step debugging and stack navigation capabilities to pry using byebug. To use, invoke pry normally.
-  
+
 end
 
 group :development do
