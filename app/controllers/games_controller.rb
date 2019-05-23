@@ -5,6 +5,11 @@ class GamesController < ApplicationController
     render json: game 
   end
 
+  def show
+    game = Game.find(params[:id])
+    render json: game
+  end
+
   def index #GET /games
     games = Game.all 
     render json:games 
