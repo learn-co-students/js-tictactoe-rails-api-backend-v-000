@@ -1,6 +1,8 @@
 class GamesController < ApplicationController
   # Add your GamesController code here
   def index
+    @games = Game.all
+    render json: @games, status: 200
   end
 
   def show
@@ -17,6 +19,8 @@ class GamesController < ApplicationController
   end
 
   def update
+    @game = Game.find(params[:id])
+    @game.update!(state: params[:state])
   end
 
   private
