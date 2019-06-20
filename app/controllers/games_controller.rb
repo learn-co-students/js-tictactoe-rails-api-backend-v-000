@@ -9,7 +9,7 @@ class GamesController < ApplicationController
   end
 
   def update
-    Game.find(params[:id]).update(state: params[:state])
+    render json: Game.find(params[:id]).update(state: params[:state])
   end
 
   def index
