@@ -13,14 +13,12 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
-    respond_to do |f|
-      format.html { render :show }
-      format.json { render json: @game }
-    end
+    render json: @game 
+    # end
   end
 
   def update
-    @game = Game.find(params[:id])
+    @game = Game.find(params[:id]).update(state: params[:state])
   end
   
 end
