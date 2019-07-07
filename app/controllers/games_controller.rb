@@ -1,5 +1,4 @@
 class GamesController < ApplicationController
-  # Add your GamesController code here
 
   def index
    @games = Game.all
@@ -17,7 +16,8 @@ class GamesController < ApplicationController
   end
 
   def update
-    @game = Game.find(params[:id])
+    Game.find(params[:id]).update(game_params)
+    render json: @game
   end
 
   private
@@ -25,5 +25,4 @@ class GamesController < ApplicationController
   def game_params
     params.permit(state: [])
   end
-
 end
