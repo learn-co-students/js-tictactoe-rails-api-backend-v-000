@@ -23,3 +23,16 @@
 <button id="save">Save Game</button>
 <button id="previous">Show Previous Games</button>
 <button id="clear">Clear Current Game</button>
+
+
+<script type="text/javascript" charset="utf-8">
+$(function () {
+  $("#clear").on('click', function() {
+
+    $.get("/games/create", function(data) {
+      // Replace text of body-id div
+      //$("#body-" + id).html(data["description"]);
+    });
+  });
+});
+</script>
