@@ -10,7 +10,7 @@ RSpec.describe GamesController, :type => :controller do
       post :create, params: {
         :state => ["X", "", "", "", "", "", "", "", ""]
       }
-
+    
       expect(Game.count).to eq(1)
     end
 
